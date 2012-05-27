@@ -1,0 +1,10 @@
+#bluetooth
+/dev/ttyHS0              0600   bluetooth bluetooth
+
+#graphics
+/dev/kgsl-3d0            0666   system    graphics
+/dev/genlock             0666   system    graphics
+/dev/graphics/fb0        0660   media     graphics
+
+#camera
+/dev/msm_camera/*        0660   media     system
