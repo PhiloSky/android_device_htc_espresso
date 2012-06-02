@@ -15,8 +15,8 @@ $(call inherit-product, device/htc/espresso/espresso.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := espresso
-PRODUCT_NAME := cm_espresso
-PRODUCT_BRAND := htc
-PRODUCT_MODEL := Espresso
+PRODUCT_NAME := htc_espresso
+PRODUCT_BRAND := tmobile
+PRODUCT_MODEL := T-Mobile myTouch 3G Slide
 PRODUCT_MANUFACTURER := HTC
-PRODUCT_VERSION_DEVICE_SPECIFIC := -ALPHA1
+PRODUCT_VERSION_DEVICE_SPECIFIC := -Bluewater-ALPHA1
