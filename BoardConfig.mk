@@ -111,8 +111,8 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/htc/common
 
-TARGET_KERNEL_SOURCE := kernel/htc/msm7227
-TARGET_KERNEL_CONFIG := cyanogen_msm7227_defconfig
+#TARGET_KERNEL_SOURCE := kernel/htc/msm7227
+#TARGET_KERNEL_CONFIG := cyanogen_msm7227_defconfig
 TARGET_PREBUILT_KERNEL := device/htc/espresso/prebuilt/kernel
 
 #TARGET_PREBUILT_RECOVERY_KERNEL := device/htc/espresso/prebuilt/recovery_kernel
