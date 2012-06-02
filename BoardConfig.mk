@@ -123,8 +123,8 @@ TARGET_PREBUILT_KERNEL := device/htc/espresso/prebuilt/kernel
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 
 # Fix for Atmel touchscreens; trackball button
-BOARD_USE_LEGACY_TOUCHSCREEN := true
-BOARD_USE_LEGACY_TRACKPAD := true
+#BOARD_USE_LEGACY_TOUCHSCREEN := true
+#BOARD_USE_LEGACY_TRACKPAD := true
 
 HTTP := chrome
 WITH_JIT := true
