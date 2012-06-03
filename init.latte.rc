@@ -104,7 +104,7 @@ service wlan_loader /system/bin/wlan_loader \
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf -dd
     class main
     socket wpa_tiwlan0 dgram 660 wifi wifi
     disabled
