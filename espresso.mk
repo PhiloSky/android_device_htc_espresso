@@ -46,9 +46,7 @@ PRODUCT_COPY_FILES += \
     device/htc/espresso/ueventd.latte.rc:root/ueventd.latte.rc
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/librilswitch.so \
-    rilswitch.vendorlibpath=/system/lib/libhtc_ril.so \
-    rilswitch.ganlibpath=/system/lib/libganril.so \
+    rild.libpath=/system/lib/libhtc_ril.so \
     ro.ril.enable.dtm=0 \
     ro.ril.hsdpa.category=8 \
     ro.ril.hsupa.category=5 \

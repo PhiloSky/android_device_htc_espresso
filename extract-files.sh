@@ -25,8 +25,6 @@ adb pull /system/etc/AudioPara4_WB.csv ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/AudioPreProcess.csv ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/wifi/Fw1273_CHIP.bin ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/wifi/Fw1273_CHIP_AP.bin ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libganril.so ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/librilswitch.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libmm-adspsvc.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libmmclient.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libOmxH264Dec.so ../../../vendor/htc/$DEVICE/proprietary
@@ -65,8 +63,6 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/AudioPreProcess.csv:/system/etc/AudioPreProcess.csv \\
     vendor/htc/__DEVICE__/proprietary/Fw1273_CHIP.bin:system/etc/wifi/Fw1273_CHIP.bin \\
     vendor/htc/__DEVICE__/proprietary/Fw1273_CHIP_AP.bin:system/etc/wifi/Fw1273_CHIP_AP.bin \\
-    vendor/htc/__DEVICE__/proprietary/libganril.so:system/lib/libganril.so \\
-    vendor/htc/__DEVICE__/proprietary/librilswitch.so:system/lib/librilswitch.so \\
     vendor/htc/__DEVICE__/proprietary/libmm-adspsvc.so:/system/lib/libmm-adspsvc.so \\
     vendor/htc/__DEVICE__/proprietary/libmmclient.so:system/lib/libmmclient.so \\
     vendor/htc/__DEVICE__/proprietary/libOmxH264Dec.so:/system/lib/libOmxH264Dec.so \\
