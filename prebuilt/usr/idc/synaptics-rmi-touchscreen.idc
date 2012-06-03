@@ -62,3 +62,4 @@ touch.size.calibration = normalized
 # Orientation
 touch.orientation.calibration = none
 
+device.internal = 1
