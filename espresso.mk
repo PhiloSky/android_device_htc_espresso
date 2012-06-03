@@ -179,8 +179,7 @@ PRODUCT_COPY_FILES += \
     device/htc/espresso/prebuilt/etc/firmware/wl1271.bin:system/etc/firmware/wl1271.bin \
     device/htc/espresso/prebuilt/lib/modules/sdio.ko:/system/lib/modules/sdio.ko \
     device/htc/espresso/prebuilt/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
-    device/htc/espresso/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
-    device/htc/espresso/prebuilt/lib/modules/gan-eth.ko:/system/lib/modules/gan-eth.ko
+    device/htc/espresso/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko
 
 # ICS GPU drivers from Qualcomm
 PRODUCT_COPY_FILES += \

@@ -18,7 +18,6 @@ DEVICE=espresso
 
 mkdir -p ../../../vendor/htc/$DEVICE/proprietary
 
-adb pull /system/app/MS-HTCVISION-KNT20-02.apk ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/bin/akmd ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/AudioFilter.csv ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/AudioPara4.csv ../../../vendor/htc/$DEVICE/proprietary
@@ -26,7 +25,6 @@ adb pull /system/etc/AudioPara4_WB.csv ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/AudioPreProcess.csv ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/wifi/Fw1273_CHIP.bin ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/etc/wifi/Fw1273_CHIP_AP.bin ../../../vendor/htc/$DEVICE/proprietary
-adb pull /system/lib/libkineto.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libganril.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/librilswitch.so ../../../vendor/htc/$DEVICE/proprietary
 adb pull /system/lib/libmm-adspsvc.so ../../../vendor/htc/$DEVICE/proprietary
@@ -60,7 +58,6 @@ chmod 755 ../../../vendor/htc/$DEVICE/proprietary/akmd
  
 # All the blobs necessary for espresso
 PRODUCT_COPY_FILES += \\
-    vendor/htc/__DEVICE__/proprietary/MS-HTCVISION-KNT20-02.apk:system/app/MS-HTCVISION-KNT20-02.apk \\
     vendor/htc/__DEVICE__/proprietary/akmd:/system/bin/akmd \\
     vendor/htc/__DEVICE__/proprietary/AudioFilter.csv:/system/etc/AudioFilter.csv \\
     vendor/htc/__DEVICE__/proprietary/AudioPara4.csv:/system/etc/AudioPara4.csv \\
@@ -68,7 +65,6 @@ PRODUCT_COPY_FILES += \\
     vendor/htc/__DEVICE__/proprietary/AudioPreProcess.csv:/system/etc/AudioPreProcess.csv \\
     vendor/htc/__DEVICE__/proprietary/Fw1273_CHIP.bin:system/etc/wifi/Fw1273_CHIP.bin \\
     vendor/htc/__DEVICE__/proprietary/Fw1273_CHIP_AP.bin:system/etc/wifi/Fw1273_CHIP_AP.bin \\
-    vendor/htc/__DEVICE__/proprietary/libkineto.so:system/lib/libkineto.so \\
     vendor/htc/__DEVICE__/proprietary/libganril.so:system/lib/libganril.so \\
     vendor/htc/__DEVICE__/proprietary/librilswitch.so:system/lib/librilswitch.so \\
     vendor/htc/__DEVICE__/proprietary/libmm-adspsvc.so:/system/lib/libmm-adspsvc.so \\
