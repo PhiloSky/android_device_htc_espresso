@@ -1,6 +1,6 @@
-ifneq ($(BUILD_TINY_ANDROID),true)
-
 LOCAL_PATH := $(call my-dir)
+
+ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),latte)
 
 include $(CLEAR_VARS)
 
@@ -50,5 +50,5 @@ endif
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif # not BUILD_TINY_ANDROID
+endif # TARGET_BOOTLOADER_BOARD_NAME
 
