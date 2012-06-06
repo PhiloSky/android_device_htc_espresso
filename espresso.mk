@@ -21,11 +21,7 @@ DEVICE_PACKAGE_OVERLAYS := device/htc/espresso/overlay
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/htc/espresso/prebuilt/usr/keylayout/latte-keypad-v0.kl:system/usr/keylayout/latte-keypad-v0.kl \
-    device/htc/espresso/prebuilt/usr/keylayout/latte-keypad-v1.kl:system/usr/keylayout/latte-keypad-v1.kl \
     device/htc/espresso/prebuilt/usr/keylayout/latte-keypad-v2.kl:system/usr/keylayout/latte-keypad-v2.kl \
-    device/htc/espresso/prebuilt/usr/keychars/latte-keypad-v0.kcm.bin:system/usr/keychars/latte-keypad-v0.kcm.bin \
-    device/htc/espresso/prebuilt/usr/keychars/latte-keypad-v1.kcm.bin:system/usr/keychars/latte-keypad-v1.kcm.bin \
     device/htc/espresso/prebuilt/usr/keychars/latte-keypad-v2.kcm.bin:system/usr/keychars/latte-keypad-v2.kcm.bin \
     device/htc/espresso/prebuilt/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
     device/htc/espresso/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
