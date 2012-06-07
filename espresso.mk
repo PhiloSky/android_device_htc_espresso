@@ -148,7 +148,7 @@ PRODUCT_PACKAGES += \
 # HotSpot
 PRODUCT_PACKAGES += \
     tiap_loader \
-    tiap_cu \
+#   tiap_cu \
     tiwlan_ap.ini \
     hostap \
     hostapd.conf
