@@ -89,7 +89,7 @@ on init
     chown media media /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
     # Copying hostapd.conf (WLAN HotSpot)
-    #copy /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf
+    copy /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf
     chown wifi wifi /data/misc/wifi
 
     # performance tweaks for flash
@@ -98,7 +98,7 @@ on init
     write /sys/block/mtdblock5/bdi/read_ahead_kb 4
 
     # For Kineto GAN
-    insmod /system/lib/modules/gan-eth.ko
+    # insmod /system/lib/modules/gan-eth.ko
 
 service wlan_loader /system/bin/wlan_loader \
     -f /system/etc/wifi/Fw1273_CHIP.bin -e /proc/calibration \
