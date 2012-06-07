@@ -7,7 +7,6 @@ on boot
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
-    #mkdir /data/misc/hotspot 0770 system hotspot
 
     # bluetooth power up/down interface
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -67,7 +66,7 @@ on init
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
-    mkdir /data/misc/hotspot 0770 system hotspot
+    # mkdir /data/misc/hotspot 0770 system hotspot
 
     chown system system /sys/module/serial/parameters/modem_enabled
     chown system system /dev/ttyHSUSB0
@@ -92,6 +91,11 @@ on init
     # Copying hostapd.conf (WLAN HotSpot)
     #copy /system/etc/wifi/softap/hostapd.conf /data/misc/wifi/hostapd.conf
     chown wifi wifi /data/misc/wifi
+
+    # performance tweaks for flash
+    write /sys/block/mtdblock3/bdi/read_ahead_kb 4
+    write /sys/block/mtdblock4/bdi/read_ahead_kb 4
+    write /sys/block/mtdblock5/bdi/read_ahead_kb 4
 
     # For Kineto GAN
     insmod /system/lib/modules/gan-eth.ko
@@ -120,16 +124,18 @@ service iprenew_tiwlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service modem /system/xbin/wireless_modem
-    user system
-    group system radio
+# HotSpot Related services
+service wlan_ap_loader /system/bin/tiap_loader \
+    -f /system/etc/wifi/Fw1273_CHIP_AP.bin \
+    -i /system/etc/wifi/softap/tiwlan_ap.ini
+    class main
     disabled
+    oneshot
 
-on property:service.modem.enable=1
-    start modem
-
-on property:service.modem.enable=0
-    stop modem
+service hostapd /system/bin/hostap -dd /data/misc/wifi/hostapd.conf
+    class main
+    disabled
+    oneshot
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd_tiwlan0
@@ -156,21 +162,19 @@ on property:persist.service.zram=18
 on property:persist.service.zram=26
     start compcache
 
-service srv_ser2net /system/bin/ser2net -n
-    disabled
-
-on property:service.ser2net.enable=1
-    start srv_ser2net
-
-on property:service.ser2net.enable=0
-    stop srv_ser2net
-
 service hciattach /system/bin/hciattach \
     -n -s 115200 /dev/ttyHS0 texasalt 4000000 flow
     class main
     user bluetooth
     group bluetooth net_bt_admin
     disabled
+
+# bugreport is triggered by the KEY_BACK and KEY_MENU keycodes
+service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
+    class main
+    disabled
+    oneshot
+    keycodes 158 139
 
 service hfag /system/bin/sdptool add --channel=10 HFAG
     user bluetooth
