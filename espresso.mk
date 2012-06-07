@@ -145,6 +145,14 @@ PRODUCT_PACKAGES += \
     wlan_loader \
     libCustomWifi
 
+# HotSpot
+PRODUCT_PACKAGES += \
+    tiap_loader \
+    tiap_cu \
+    tiwlan_ap.ini \
+    hostap \
+    hostapd.conf
+
 PRODUCT_COPY_FILES += \
     device/htc/espresso/vold.fstab:system/etc/vold.fstab \
     device/common/gps/gps.conf_US:system/etc/gps.conf \
