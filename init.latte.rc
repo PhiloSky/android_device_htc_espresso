@@ -170,11 +170,11 @@ service hciattach /system/bin/hciattach \
     disabled
 
 # bugreport is triggered by the KEY_BACK and KEY_MENU keycodes
-service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 158 139
+# service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
+#   class main
+#   disabled
+#   oneshot
+#   keycodes 158 139
 
 service hfag /system/bin/sdptool add --channel=10 HFAG
     user bluetooth
