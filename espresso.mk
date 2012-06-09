@@ -153,6 +153,10 @@ PRODUCT_PACKAGES += \
 #   hostap \
 #   hostapd.conf
 
+# Torch
+PRODUCT_PACKAGES += \
+    Torch
+
 PRODUCT_COPY_FILES += \
     device/htc/espresso/vold.fstab:system/etc/vold.fstab \
     device/common/gps/gps.conf_US:system/etc/gps.conf \
