@@ -60,8 +60,6 @@ WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
 WIFI_EXT_MODULE_PATH        := "/system/lib/modules/sdio.ko"
 WIFI_EXT_MODULE_NAME        := "sdio"
 WIFI_FIRMWARE_LOADER        := "wlan_loader"
-WIFI_PRE_LOAD_RFKILL        := true
-WIFI_POST_UNLOAD_RFKILL     := true
 
 BOARD_USES_GENERIC_AUDIO := false
 
