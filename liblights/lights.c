@@ -48,6 +48,8 @@ static struct light_state_t g_notification;
 static struct light_state_t g_battery;
 static int g_backlight = 255;
 static int g_buttons = 0;
+static int g_caps = 0;
+static int g_func = 0;
 
 char const*const RED_LED_FILE
         = "/sys/class/leds/red/brightness";
@@ -191,6 +193,7 @@ set_light_caps(struct light_device_t* dev,
     int err = 0;
     int on = is_lit(state);
     pthread_mutex_lock(&g_lock);
+    g_caps = on;
     err = write_int(CAPS_FILE, on?255:0);
     pthread_mutex_unlock(&g_lock);
     return err;
@@ -203,6 +206,7 @@ set_light_func(struct light_device_t* dev,
     int err = 0;
     int on = is_lit(state);
     pthread_mutex_lock(&g_lock);
+    g_func = on;
     err = write_int(FUNC_FILE, on?255:0);
     pthread_mutex_unlock(&g_lock);
     return err;
