@@ -22,12 +22,12 @@ DEVICE_PACKAGE_OVERLAYS := device/htc/espresso/overlay
 # Keylayouts
 PRODUCT_COPY_FILES += \
     device/htc/espresso/prebuilt/usr/keylayout/latte-keypad-v2.kl:system/usr/keylayout/latte-keypad-v2.kl \
-    device/htc/espresso/prebuilt/usr/keychars/latte-keypad-v2.kcm.bin:system/usr/keychars/latte-keypad-v2.kcm.bin \
-    device/htc/espresso/prebuilt/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/htc/espresso/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
     device/htc/espresso/prebuilt/usr/keylayout/h2w_headset.kl:system/usr/keylayout/h2w_headset.kl \
-    device/htc/espresso/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/htc/espresso/prebuilt/usr/keylayout/synaptics-rmi-touchscreen.kl:system/usr/keylayout/synaptics-rmi-touchscreen.kl
+
+# Keychars
+PRODUCT_COPY_FILES += \
+    device/htc/espresso/prebuilt/usr/keychars/latte-keypad-v2.kcm:system/usr/keychars/latte-keypad-v2.kcm
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
