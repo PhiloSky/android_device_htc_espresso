@@ -48,7 +48,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.def.agps.mode=2 \
     ro.ril.hsxpa=2 \
     ro.ril.gprsclass=10 \
-    mobiledata.interfaces=gannet0,rmnet0,rmnet1,rmnet2 \
+    mobiledata.interfaces=rmnet0,rmnet1,rmnet2 \
     wifi.interface=tiwlan0 \
     wifi.supplicant_scan_interval=15 \
     ro.sf.lcd_density=160 \
@@ -98,6 +98,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Override /proc/sys/vm/dirty_ratio on UMS
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.umsdirtyratio=20
+
+# Temporary trackball wake until CM adds it
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.tbwake=1
 
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
