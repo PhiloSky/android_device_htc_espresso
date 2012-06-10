@@ -27,6 +27,11 @@ on boot
     chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/button-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
+
+    # Permissions for Physical Keyboard
+    chown system system /sys/class/leds/caps/brightness
+    chown system system /sys/class/leds/func/brightness
+
     # set CABC permissions
     chown system system /sys/class/leds/lcd-backlight/auto
 
@@ -51,8 +56,8 @@ on init
     mkdir /data/app-cache 0771 system system
     mount rootfs rootfs / ro remount
 
-# Define the memory thresholds at which the above process classes will
-# be killed.  These numbers are in pages (4k).
+    # Define the memory thresholds at which the above process classes will
+    # be killed.  These numbers are in pages (4k).
     setprop ro.FOREGROUND_APP_MEM 3584
     setprop ro.VISIBLE_APP_MEM 4096
     setprop ro.SECONDARY_SERVER_MEM 6144
@@ -74,11 +79,9 @@ on init
     chown radio radio /sys/module/msm_flashlight/parameters/phone_status
     # chown system system /sys/class/leds/wimax/brightness
 
-# Overwrite framework low memory killer minfree setting
-    write /sys/module/lowmemorykiller/parameters/minfree 3584,4096,6144,7168,7680,8192
-
-# Enable low memory killer to check file pages
-    write /sys/module/lowmemorykiller/parameters/minfile 0,0,0,5120,5632,6144
+    # Overwrite framework low memory killer setting
+    write /sys/module/lowmemorykiller/parameters/minfree 2048,3072,4096,6144,8192,12288
+    write /sys/module/lowmemorykiller/parameters/minfile 2048,3072,4096,6144,8192,12288
     write /sys/module/lowmemorykiller/parameters/check_filepages 1
 
     # for Espresso VoiceCommand
@@ -103,24 +106,24 @@ on init
 service wlan_loader /system/bin/wlan_loader \
     -f /system/etc/wifi/Fw1273_CHIP.bin -e /proc/calibration \
     -i /system/etc/wifi/tiwlan.ini
-    class main
+    class late_start
     disabled
     oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -Dtiwlan0 -itiwlan0 -c/data/misc/wifi/wpa_supplicant.conf -q
-    class main
+    class late_start
     socket wpa_tiwlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
 service dhcpcd_tiwlan0 /system/bin/dhcpcd -ABKL
-    class main
+    class late_start
     disabled
     oneshot
 
 service iprenew_tiwlan0 /system/bin/dhcpcd -n
-    class main
+    class late_start
     disabled
     oneshot
 
@@ -128,12 +131,12 @@ service iprenew_tiwlan0 /system/bin/dhcpcd -n
 # service wlan_ap_loader /system/bin/tiap_loader \
 #   -f /system/etc/wifi/Fw1273_CHIP_AP.bin \
 #   -i /system/etc/wifi/softap/tiwlan_ap.ini
-#   class main
+#   class late_start
 #   disabled
 #   oneshot
 
 # service hostapd /system/bin/hostap -dd /data/misc/wifi/hostapd.conf
-#   class main
+#   class late_start
 #   disabled
 #   oneshot
 
@@ -142,7 +145,7 @@ on property:init.svc.wpa_supplicant=stopped
 
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
-    class main
+    class core
     user compass
     group compass misc input
 
