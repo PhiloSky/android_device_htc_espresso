@@ -2,7 +2,7 @@
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := Espresso
+PRODUCT_RELEASE_NAME := espresso
 
 # Boot animation
 TARGET_BOOTANIMATION_NAME := vertical-320x480

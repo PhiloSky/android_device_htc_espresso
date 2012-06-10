@@ -98,6 +98,10 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
+
+    <!-- Flag indicating whether we should enable automatic brightness for
+         the button and keyboard backlights. -->
+    <bool name="config_autoBrightnessButtonKeyboard">false</bool>
      
     <!-- Component name of the default wallpaper. This will be ImageWallpaper if not 
          specified -->
