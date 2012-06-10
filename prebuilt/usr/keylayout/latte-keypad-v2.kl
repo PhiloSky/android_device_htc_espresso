@@ -73,7 +73,7 @@ key 115   VOLUME_UP         WAKE
 key 116   POWER             WAKE_DROPPED
 key 139   MENU              WAKE_DROPPED
 key 158   BACK
-key 183   SYM               WAKE_DROPPED
+key 183   BUTTON_2          WAKE_DROPPED
 key 184   BACK              WAKE_DROPPED
 key 185   HOME              WAKE_DROPPED
 key 186   MENU              WAKE_DROPPED

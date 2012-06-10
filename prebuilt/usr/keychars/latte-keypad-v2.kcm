@@ -273,6 +273,13 @@ key BUTTON_R2 {
   alt: '?'
   shift+alt: '?'
 }
+key BUTTON_2 {
+  label:'\uEF01'
+  base:'\uEF01'
+  shift, capslock:'\uEF01'
+  alt: '\uEF01'
+  shift+alt: '\uEF01'
+}
 key COMMA          {
 	label:','       
 	base:','       
@@ -298,8 +305,8 @@ key SPACE          {
 	label:'\u0020'  
 	base:'\u0020'  
 	shift, capslock:'\u0020'  
-	alt: '\uEF01'  
-	shift+alt:'\uEF01'  
+	alt: '\u0020' 
+	shift+alt:'\u0020'
 }
 key ENTER          {
 	label:'\u000A'  
