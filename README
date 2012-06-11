@@ -54,12 +54,12 @@ Copyright (C) 2012 bluewater-cn
 
   $ source build/envsetup.sh
   $ lunch
-  (select cm_espresso-userdebug)
+  (select cm_espresso-eng)
 
 
   Build CM9
 
-  $ make otapackage -j4
+  $ make otapackage -j2
 
 
 * Thanks
