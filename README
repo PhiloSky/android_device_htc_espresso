@@ -54,7 +54,7 @@ Copyright (C) 2012 bluewater-cn
 
   $ source build/envsetup.sh
   $ lunch
-  (select cm_espresso-eng)
+  (select cm_espresso-userdebug)
 
 
   Build CM9
