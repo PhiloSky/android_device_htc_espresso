@@ -89,13 +89,13 @@
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <CamcorderProfiles cameraId="0">
 
-        <EncoderProfile quality="high" fileFormat="3gp" duration="60">
+        <EncoderProfile quality="high" fileFormat="mp4" duration="60">
             <!-- TODO: Change frameRate back to 30 when it wants to work -->
             <Video codec="h263"
                    bitRate="1600000"
                    width="640"
                    height="480"
-                   frameRate="30" />
+                   frameRate="15" />
 
             <Audio codec="aac"
                    bitRate="96000"
