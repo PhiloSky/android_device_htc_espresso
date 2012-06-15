@@ -40,7 +40,9 @@ PRODUCT_COPY_FILES += \
     device/htc/espresso/ueventd.latte.rc:root/ueventd.latte.rc
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/system/lib/libhtc_ril.so \
+    rild.libpath=/system/lib/librilswitch.so \
+    rilswitch.vendorlibpath=/system/lib/libhtc_ril.so \
+    rilswitch.ganlibpath=/system/lib//system/lib/libganril.so \
     ro.ril.enable.dtm=0 \
     ro.ril.hsdpa.category=8 \
     ro.ril.hsupa.category=5 \
@@ -48,7 +50,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.def.agps.mode=2 \
     ro.ril.hsxpa=2 \
     ro.ril.gprsclass=10 \
-    mobiledata.interfaces=rmnet0,rmnet1,rmnet2 \
+    mobiledata.interfaces=gannet0,rmnet0,rmnet1,rmnet2 \
     wifi.interface=tiwlan0 \
     wifi.supplicant_scan_interval=15 \
     ro.sf.lcd_density=160 \
@@ -161,6 +163,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Torch
 
+# Wifi Calling Part1
+PRODUCT_PACKAGES += \
+    GanOptimizer
+
+# Wifi Calling Part2
+PRODUCT_COPY_FILES += \
+    device/htc/espresso/prebuilt/app/HTC-PYRTM-ICS-4.0.1-2.3-49986-4.3.apk:system/app/HTC-PYRTM-ICS-4.0.1-2.3-49986-4.3.apk \
+    device/htc/espresso/prebuilt/lib/libkineto.so:system/lib/libkineto.so
+
 PRODUCT_COPY_FILES += \
     device/htc/espresso/vold.fstab:system/etc/vold.fstab \
     device/common/gps/gps.conf_US:system/etc/gps.conf \
@@ -187,7 +198,8 @@ PRODUCT_COPY_FILES += \
     device/htc/espresso/prebuilt/etc/firmware/wl1271.bin:system/etc/firmware/wl1271.bin \
     device/htc/espresso/prebuilt/lib/modules/sdio.ko:/system/lib/modules/sdio.ko \
     device/htc/espresso/prebuilt/lib/modules/tiwlan_drv.ko:/system/lib/modules/tiwlan_drv.ko \
-    device/htc/espresso/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko
+    device/htc/espresso/prebuilt/lib/modules/tiap_drv.ko:/system/lib/modules/tiap_drv.ko \
+    device/htc/espresso/prebuilt/lib/modules/gan-eth.ko:/system/lib/modules/gan-eth.ko
 
 # ICS GPU drivers from Qualcomm
 PRODUCT_COPY_FILES += \
