@@ -78,9 +78,10 @@ key 184   BACK              WAKE_DROPPED
 key 185   HOME              WAKE_DROPPED
 key 186   MENU              WAKE_DROPPED
 key 187   SEARCH
+key 193   DPAD_CENTER       WAKE_DROPPED
 key 211   FOCUS
 key 212   CAMERA
 key 214   BUTTON_R2         WAKE_DROPPED
 key 215   AT                WAKE_DROPPED
 key 217   SEARCH            WAKE_DROPPED
-key 272   DPAD_CENTER       WAKE_DROPPED
+#key 272   DPAD_CENTER       WAKE_DROPPED
