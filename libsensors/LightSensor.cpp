@@ -119,7 +119,7 @@ int LightSensor::readEvents(sensors_event_t* data, int count)
         if (type == EV_ABS) {
             if (event->code == EVENT_TYPE_LIGHT) {
                 if (event->value != -1) {
-                    mPendingEvent.light = indexToValue(event->value * 2);
+                    mPendingEvent.light = indexToValue(event->value * 2.8);
                 }
             }
         } else if (type == EV_SYN) {
