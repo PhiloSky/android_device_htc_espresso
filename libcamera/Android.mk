@@ -2,7 +2,7 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-ifneq (,$(findstring $(TARGET_BOARD_PLATFORM),msm7x27))
+ifeq (,$(findstring $(TARGET_BOARD_PLATFORM),msm7x27))
 
 LOCAL_C_FLAGS          += -O3
 LOCAL_MODULE_TAGS      := optional
