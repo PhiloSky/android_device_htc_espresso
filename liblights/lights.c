@@ -18,14 +18,6 @@
 // #define LOG_NDEBUG 0
 #define LOG_TAG "lights"
 
-/*
-* Additional hardware-specific lights
-*/
-#define LIGHT_ID_CAPS "caps"
-#define LIGHT_ID_FUNC "func"
-#define LIGHT_ID_WIMAX "wimax"
-#define LIGHT_ID_FLASHLIGHT "flashlight"
-
 #include <cutils/log.h>
 
 #include <stdint.h>
