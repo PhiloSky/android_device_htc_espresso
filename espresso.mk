@@ -174,6 +174,10 @@ PRODUCT_COPY_FILES += \
     device/htc/espresso/prebuilt/app/HTC-PYRTM-ICS-4.0.1-2.3-49986-4.3.apk:system/app/HTC-PYRTM-ICS-4.0.1-2.3-49986-4.3.apk \
     device/htc/espresso/prebuilt/lib/libkineto.so:system/lib/libkineto.so
 
+# File Manager
+PRODUCT_PACKAGES += \
+    FileManager
+
 PRODUCT_COPY_FILES += \
     device/htc/espresso/vold.fstab:system/etc/vold.fstab \
     device/common/gps/gps.conf_US:system/etc/gps.conf \
