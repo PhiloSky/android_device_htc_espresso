@@ -184,7 +184,6 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/htc/espresso/prebuilt/etc/init.d/05mountsd:system/etc/init.d/05mountsd \
     device/htc/espresso/prebuilt/etc/init.d/95wificalling:system/etc/init.d/95wificalling \
-    device/htc/espresso/prebuilt/lib/libcamera.so:system/lib/libcamera.so \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
     
 # Backwards compatible libcrypto
