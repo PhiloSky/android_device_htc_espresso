@@ -184,6 +184,7 @@ PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml \
     device/htc/espresso/prebuilt/etc/init.d/05mountsd:system/etc/init.d/05mountsd \
     device/htc/espresso/prebuilt/etc/init.d/95wificalling:system/etc/init.d/95wificalling \
+    device/htc/espresso/prebuilt/lib/libcamera.so:system/lib/libcamera.so \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
     
 # Backwards compatible libcrypto
@@ -227,6 +228,10 @@ $(call inherit-product, device/htc/espresso/media_a1026.mk)
 
 # Sets copy files for all HTC-specific device
 PRODUCT_COPY_FILES += device/htc/espresso/prebuilt/etc/ecclist_for_mcc.conf:system/etc/ecclist_for_mcc.conf
+
+# Prebuilt libraries that are needed to build open-source libraries
+PRODUCT_COPY_FILES += \
+    device/htc/espresso/prebuilt/lib/libcamera.so:obj/lib/libcamera.so
 
 $(call inherit-product, build/target/product/full_base_telephony.mk)
 
