@@ -19,7 +19,7 @@
 **
 ** All alterations done to this file to add support for the Z71 terminal
 ** are intended for use with CyanogenMod. This includes all the support
-** for ov5642, and the reverse engineered bits like ioctls and EXIF 
+** for ov5642, and the reverse engineered bits like ioctls and EXIF
 ** referred to below as "Values originally from proprietary headers")
 ** Please do not change the EXIF header without asking me first.
 */
@@ -35,7 +35,7 @@
 
 extern "C" {
 #include <linux/android_pmem.h>
-#include <msm_camera.h>
+#include <media/msm_camera.h>
 }
 
 struct str_map {
@@ -43,12 +43,13 @@ struct str_map {
     int val;
 };
 
-typedef enum {
+typedef enum{
+    TARGET_MSM7227,
     TARGET_MSM7625,
     TARGET_MSM7627,
     TARGET_QSD8250,
     TARGET_MSM7630,
-    TARGET_MAX
+    TARGET_MAX,
 }targetType;
 
 struct target_map {
@@ -69,16 +70,16 @@ struct board_property{
 #define FALSE 0
 
 #define CAMERA_MIN_CONTRAST 0
-#define CAMERA_MAX_CONTRAST 4
+#define CAMERA_MAX_CONTRAST 5
 #define CAMERA_MIN_SHARPNESS 0
 #define CAMERA_MIN_EXPOSURE_COMPENSATION -2
-#define CAMERA_MAX_SHARPNESS 4
+#define CAMERA_MAX_SHARPNESS 10
 #define CAMERA_MIN_SATURATION 0
-#define CAMERA_MAX_SATURATION 4
+#define CAMERA_MAX_SATURATION 5
 #define CAMERA_MAX_EXPOSURE_COMPENSATION 2
-#define CAMERA_DEF_SHARPNESS 2
-#define CAMERA_DEF_CONTRAST 2
-#define CAMERA_DEF_SATURATION 2
+#define CAMERA_DEF_SHARPNESS 10
+#define CAMERA_DEF_CONTRAST 5
+#define CAMERA_DEF_SATURATION 5
 #define CAMERA_DEF_EXPOSURE_COMPENSATION "0"
 #define CAMERA_EXPOSURE_COMPENSATION_STEP 1
 
@@ -101,7 +102,7 @@ typedef struct {
 	unsigned int in2_h;
 	unsigned int out2_w;
 	unsigned int out2_h;
-	uint8_t update_flag; 
+	uint8_t update_flag;
 } common_crop_t;
 
 typedef uint8_t cam_ctrl_type;
@@ -226,65 +227,73 @@ struct fifo_node *dequeue(struct fifo_queue *queue) {
 	return node;
 }
 
-
+/* These values are from marvel liboemcamera.so */
 enum camera_ops {
-    CAMERA_SET_PARM_ENCODE_ROTATION,
-    CAMERA_SET_PARM_DIMENSION,
-    CAMERA_SET_PARM_ZOOM,
-    CAMERA_SET_PARM_SENSOR_POSITION,
-    CAMERA_SET_PARM_SHARPNESS,
-    CAMERA_SET_PARM_LUMA_ADAPTATION,
-    CAMERA_SET_PARM_CONTRAST,
-    CAMERA_SET_PARM_EXPOSURE_COMPENSATION,
-    CAMERA_SET_PARM_BRIGHTNESS,
-    CAMERA_SET_PARM_FOCUS_RECT,
-    CAMERA_SET_PARM_HUE,
-    CAMERA_SET_PARM_SATURATION,
-    CAMERA_SET_PARM_EXPOSURE,
-    CAMERA_SET_PARM_AUTO_FOCUS,
-    CAMERA_SET_PARM_WB,
-    CAMERA_SET_PARM_EFFECT,
-    CAMERA_SET_PARM_FPS,
-    CAMERA_SET_PARM_FLASH,
-    CAMERA_SET_PARM_NIGHTSHOT_MODE,
-    CAMERA_SET_PARM_REFLECT,
-    CAMERA_SET_PARM_PREVIEW_MODE,
-    CAMERA_SET_PARM_ANTIBANDING,
-    CAMERA_SET_PARM_RED_EYE_REDUCTION,
-    CAMERA_SET_PARM_FOCUS_STEP,
-    CAMERA_SET_PARM_EXPOSURE_METERING,
-    CAMERA_SET_PARM_AUTO_EXPOSURE_MODE,
-    CAMERA_SET_PARM_ISO,
-    CAMERA_SET_PARM_BESTSHOT_MODE,
-    CAMERA_SET_PARM_PREVIEW_FPS,
-    CAMERA_SET_PARM_AF_MODE,
-    CAMERA_SET_PARM_HISTOGRAM,
-    CAMERA_SET_PARM_FLASH_STATE,
-    CAMERA_SET_PARM_FRAME_TIMESTAMP,
-    CAMERA_SET_PARM_STROBE_FLASH,
-    CAMERA_SET_PARM_FPS_LIST,
-    CAMERA_SET_PARM_HJR,
-    CAMERA_SET_PARM_ROLLOFF=37,
-    CAMERA_STOP_PREVIEW=38,
-    CAMERA_START_PREVIEW,
-    CAMERA_START_SNAPSHOT,
-    CAMERA_START_VIDEO,
-    CAMERA_STOP_SNAPSHOT=42,
-    CAMERA_EXIT=43,
-    CAMERA_STOP_VIDEO,
-    CAMERA_START_RECORDING,
-    CAMERA_STOP_RECORDING,
-    CAMERA_GET_PARM_MAXZOOM,
-    CAMERA_START_RAW_SNAPSHOT,
-    CAMERA_SET_PARM_LED_MODE,
-    CAMERA_GET_PARM_AF_SHARPNESS,
-    CAMERA_SET_MOTION_ISO,
-    CAMERA_AUTO_FOCUS_CANCEL,
-    CAMERA_GET_PARM_FOCUS_STEP,
-    CAMERA_ENABLE_AFD,
-    CAMERA_PREPARE_SNAPSHOT,
-    CAMERA_SET_FPS_MODE,
-    CAMERA_SET_PARM_SCENE_MODE,
+    CAMERA_SET_PARM_DISPLAY_INFO,           //  0
+    CAMERA_SET_PARM_DIMENSION,              //  1
+    CAMERA_SET_PARM_ZOOM,                   //  2
+    CAMERA_SET_PARM_SENSOR_POSITION,        //  3
+    CAMERA_SET_PARM_FOCUS_RECT,             //  4
+    CAMERA_SET_PARM_LUMA_ADAPTATION,        //  5
+    CAMERA_SET_PARM_CONTRAST,               //  6
+    CAMERA_SET_PARM_BRIGHTNESS,             //  7
+    CAMERA_SET_PARM_EXPOSURE_COMPENSATION,  //  8
+    CAMERA_SET_PARM_SHARPNESS,              //  9
+    CAMERA_SET_PARM_HUE,                    // 10
+    CAMERA_SET_PARM_SATURATION,             // 11
+    CAMERA_SET_PARM_EXPOSURE,               // 12
+    CAMERA_SET_PARM_AUTO_FOCUS,             // 13
+    CAMERA_SET_PARM_WB,                     // 14
+    CAMERA_SET_PARM_EFFECT,                 // 15
+    CAMERA_SET_PARM_FPS,                    // 16
+    CAMERA_SET_PARM_FLASH,                  // 17
+    CAMERA_SET_PARM_NIGHTSHOT_MODE,         // 18
+    CAMERA_SET_PARM_REFLECT,                // 19
+    CAMERA_SET_PARM_PREVIEW_MODE,           // 20
+    CAMERA_SET_PARM_ANTIBANDING,            // 21
+    CAMERA_SET_PARM_RED_EYE_REDUCTION,      // 22
+    CAMERA_SET_PARM_FOCUS_STEP,             // 23
+    CAMERA_SET_PARM_EXPOSURE_METERING,      // 24
+    CAMERA_SET_PARM_AUTO_EXPOSURE_MODE,     // 25
+    CAMERA_SET_PARM_ISO,                    // 26
+    CAMERA_SET_PARM_BESTSHOT_MODE,          // 27
+    CAMERA_UNKNONW_28,
+    CAMERA_SET_PARM_PREVIEW_FPS,            // 29
+    CAMERA_SET_PARM_AF_MODE,                // 30
+    CAMERA_SET_PARM_HISTOGRAM,              // 31
+    CAMERA_SET_PARM_FLASH_STATE,            // 32
+    CAMERA_SET_PARM_FRAME_TIMESTAMP,        // 33
+    CAMERA_SET_PARM_STROBE_FLASH,           // 34
+    CAMERA_SET_PARM_FPS_LIST,               // 35
+    CAMERA_SET_PARM_HJR,                    // 36
+    CAMERA_SET_PARM_ROLLOFF,                // 37
+    CAMERA_STOP_PREVIEW,                    // 38
+    CAMERA_START_PREVIEW,                   // 39
+    CAMERA_START_SNAPSHOT,                  // 40
+    CAMERA_START_RAW_SNAPSHOT,              // 41
+    CAMERA_STOP_SNAPSHOT,                   // 42
+    CAMERA_EXIT,                            // 43
+    CAMERA_UNKNOWN_44,
+    CAMERA_UNKNOWN_45,
+    CAMERA_UNKNOWN_46,
+    CAMERA_GET_PARM_MAXZOOM,                // 47
+    CAMERA_GET_PARM_AF_SHARPNESS,           // 48
+    CAMERA_SET_PARM_LED_MODE,               // 49
+    CAMERA_SET_MOTION_ISO,                  // 50
+    CAMERA_AUTO_FOCUS_CANCEL,               // 51
+    CAMERA_GET_PARM_FOCUS_STEP,             // 52
+    CAMERA_ENABLE_AFD,                      // 53
+    CAMERA_PREPARE_SNAPSHOT,                // 54
+    CAMERA_SET_PARM_COORDINATE,             // 55
+    CAMERA_SET_AWB_CALIBRATION,             // 56
+    CAMERA_SET_PARM_LA_MODE,                // 57
+    CAMERA_SET_PARM_AE_COORDINATE,          // 58
+    CAMERA_GET_PARM_FOCAL_LENGTH,           // 59
+    CAMERA_GET_PARM_HORIZONTAL_VIEW_ANGLE,  // 60
+    CAMERA_GET_PARM_VERTICAL_VIEW_ANGLE,    // 61
+    CAMERA_GET_PARM_ISO,                    // 62
+    CAMERA_SET_PARM_FRONT_CAMERA_MODE,      // 63
+    CAMERA_GET_PARM_ACTIVE_FLASH,           // 64
 };
 
 typedef enum {
@@ -611,6 +620,7 @@ private:
     pthread_t mFrameThread;
     pthread_t mVideoThread;
     pthread_t mSnapshotThread;
+    pthread_t mCamConfigThread;
 
     common_crop_t mCrop;
 

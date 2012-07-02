@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 ####### LIBCAMERA #######
 
 # When zero we link against libmmcamera; when 1, we dlopen libmmcamera.
-DLOPEN_LIBMMCAMERA:=1
+DLOPEN_LIBMMCAMERA:=0
 
 include $(CLEAR_VARS)
 
