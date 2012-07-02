@@ -3,13 +3,15 @@ LOCAL_PATH := $(call my-dir)
 ####### LIBCAMERA #######
 
 # When zero we link against libmmcamera; when 1, we dlopen libmmcamera.
-DLOPEN_LIBMMCAMERA:=0
+DLOPEN_LIBMMCAMERA:=1
 
 include $(CLEAR_VARS)
 
 LOCAL_PRELINK_MODULE := false
 
 LOCAL_SRC_FILES:= QualcommCameraHardware.cpp
+
+LOCAL_MODULE_TAGS:= optional
 
 LOCAL_CFLAGS:= -DDLOPEN_LIBMMCAMERA=$(DLOPEN_LIBMMCAMERA)
 

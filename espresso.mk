@@ -229,10 +229,6 @@ $(call inherit-product, device/htc/espresso/media_a1026.mk)
 # Sets copy files for all HTC-specific device
 PRODUCT_COPY_FILES += device/htc/espresso/prebuilt/etc/ecclist_for_mcc.conf:system/etc/ecclist_for_mcc.conf
 
-# Prebuilt libraries that are needed to build open-source libraries
-PRODUCT_COPY_FILES += \
-    device/htc/espresso/prebuilt/lib/libcamera.so:obj/lib/libcamera.so
-
 $(call inherit-product, build/target/product/full_base_telephony.mk)
 
 PRODUCT_NAME := generic_espresso
