@@ -62,7 +62,7 @@ LightSensor::~LightSensor() {
 int LightSensor::setInitialState() {
     struct input_absinfo absinfo;
     if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_LIGHT), &absinfo)) {
-        mPendingEvent.light = absinfo.value;
+        mPendingEvent.light = indexToValue(absinfo.value);
         mHasPendingEvent = true;
     }
     return 0;
@@ -118,8 +118,8 @@ int LightSensor::readEvents(sensors_event_t* data, int count)
         int type = event->type;
         if (type == EV_ABS) {
             if (event->code == EVENT_TYPE_LIGHT) {
-                if (event->value >= 0) {
-                    mPendingEvent.light = event->value;
+                if (event->value != -1) {
+                    mPendingEvent.light = indexToValue(event->value);
                 }
             }
         } else if (type == EV_SYN) {
