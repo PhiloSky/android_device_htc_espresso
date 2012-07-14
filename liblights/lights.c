@@ -111,7 +111,7 @@ write_int(char const* path, int value)
         return amt == -1 ? -errno : 0;
     } else {
         if (already_warned == 0) {
-            LOGE("write_int failed to open %s\n", path);
+            ALOGE("write_int failed to open %s\n", path);
             already_warned = 1;
         }
         return -errno;
@@ -235,7 +235,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 
     colorRGB = state->color;
 
-    LOGD("set_speaker_light_locked colorRGB=%08X, blink=%d, battery=%d",
+    ALOGD("set_speaker_light_locked colorRGB=%08X, blink=%d, battery=%d",
             colorRGB, blink, is_lit(&g_battery));
 
     red = (colorRGB >> 16) & 0xFF;
@@ -307,7 +307,7 @@ set_light_notifications(struct light_device_t* dev,
 {
     pthread_mutex_lock(&g_lock);
     g_notification = *state;
-    LOGV("set_light_notifications color=0x%08x", state->color);
+    ALOGV("set_light_notifications color=0x%08x", state->color);
     handle_speaker_battery_locked(dev);
     pthread_mutex_unlock(&g_lock);
     return 0;
