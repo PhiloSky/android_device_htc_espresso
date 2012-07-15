@@ -166,13 +166,17 @@ PRODUCT_PACKAGES += \
     Torch
 
 # Wifi Calling Part1
-PRODUCT_PACKAGES += \
-    GanOptimizer
+#PRODUCT_PACKAGES += \
+#    GanOptimizer
 
 # Wifi Calling Part2
 PRODUCT_COPY_FILES += \
     device/htc/espresso/prebuilt/app/HTC-PYRTM-ICS-4.0.1-2.3-49986-4.3.apk:system/app/HTC-PYRTM-ICS-4.0.1-2.3-49986-4.3.apk \
     device/htc/espresso/prebuilt/lib/libkineto.so:system/lib/libkineto.so
+
+# Launcher
+PRODUCT_PACKAGES += \
+    Launcher2
 
 # File Manager
 PRODUCT_PACKAGES += \

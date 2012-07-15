@@ -143,6 +143,9 @@ ENABLE_WEBGL := true
 # Needed for camera
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
 
+# add compatiblity with ics libs
+COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
+
 # Additional
 TARGET_BOOTANIMATION_PRELOAD := true
 # TARGET_BOOTANIMATION_TEXTURE_CACHE := true
