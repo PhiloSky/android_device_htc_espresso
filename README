@@ -15,11 +15,11 @@ Copyright (C) 2012 bluewater-cn
 
 * Description
 
-  This repository is for CM9 on HTC espresso.
+  This repository is for CM10 on HTC espresso.
   It is still a work in progress.
 
 
-* How To Build CM9 for HTC espresso
+* How To Build CM10 for HTC espresso
 
   Make a workspace
 
@@ -57,7 +57,7 @@ Copyright (C) 2012 bluewater-cn
   (select cm_espresso-userdebug)
 
 
-  Build CM9
+  Build CM10
 
   $ make otapackage -j2
 
