@@ -50,7 +50,7 @@
          in the config_autoBrightnessLevels array.  This array should have size one greater
          than the size of the config_autoBrightnessLevels array.
     -->
-    c
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
         <item>66</item>
         <item>66</item>
         <item>103</item>
