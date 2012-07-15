@@ -32,8 +32,8 @@ Copyright (C) 2012 bluewater-cn
 
   Do repo init & sync
 
-  $ repo init -u git://github.com/bluewater-cn/android.git -b ics
-  $ repo sync -j20
+  $ repo init -u git://github.com/bluewater-cn/android.git -b jellybean
+  $ repo sync -j32
 
   Setup vendor
 
