@@ -22,16 +22,18 @@
   <item name="screen.on">30</item>
   <item name="bluetooth.active">103</item> <!-- In call -->
   <item name="bluetooth.on">0.8</item>
+  <!-- CPU wakelock held for 830ms on bluetooth headset at command. 43mA * 830 -->
+  <item name="bluetooth.at">35690</item>
   <item name="screen.full">114</item>
   <item name="wifi.on">23</item>
-  <item name="wifi.active">100</item>
-  <item name="wifi.scan">100</item>
+  <item name="wifi.active">200</item>
+  <item name="wifi.scan">200</item>
   <item name="dsp.audio">70</item>
   <item name="dsp.video">100</item>
-  <item name="radio.active">130</item>
+  <item name="radio.active">230</item>
   <item name="gps.on">120</item>
   <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
-      <value>3</value>
+      <value>90</value>
       <value>3</value>
   </array>
   <array name="cpu.speeds">
@@ -55,6 +57,4 @@
       <value>100</value>
       <value>140</value>
   </array>
-  <!-- This is the battery capacity in mAh -->
-  <item name="battery.capacity">1300</item>
 </device>
