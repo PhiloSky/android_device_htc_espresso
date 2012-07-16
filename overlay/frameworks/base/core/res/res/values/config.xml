@@ -174,9 +174,6 @@
         <item>30</item>
     </integer-array>
 
-    <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
-    <bool name="config_disableMenuKeyInLockScreen">true</bool>
-
     <!-- Enable electron beam -->
     <bool name="config_animateScreenLights">false</bool>
 
