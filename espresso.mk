@@ -154,12 +154,12 @@ PRODUCT_PACKAGES += \
     libCustomWifi
 
 # HotSpot
-# PRODUCT_PACKAGES += \
-#   tiap_loader \
-#   tiap_cu \
-#   tiwlan_ap.ini \
-#   hostap \
-#   hostapd.conf
+PRODUCT_PACKAGES += \
+   tiap_loader \
+   tiap_cu \
+   tiwlan_ap.ini \
+   hostap \
+   hostapd.conf
 
 # Torch
 PRODUCT_PACKAGES += \

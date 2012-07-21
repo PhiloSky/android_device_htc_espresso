@@ -52,14 +52,18 @@ TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
 BOARD_WLAN_DEVICE           := wl1271
-# BOARD_SOFTAP_DEVICE         := wl1271
+BOARD_SOFTAP_DEVICE         := wl1271
 WPA_SUPPLICANT_VERSION      := VER_0_6_X
 WIFI_DRIVER_MODULE_PATH     := "/system/lib/modules/tiwlan_drv.ko"
 WIFI_DRIVER_MODULE_ARG      := ""
 WIFI_DRIVER_MODULE_NAME     := "tiwlan_drv"
+WIFI_AP_DRIVER_MODULE_PATH  := "/system/lib/modules/tiap_drv.ko"
+WIFI_AP_DRIVER_MODULE_ARG   := ""
+WIFI_AP_DRIVER_MODULE_NAME  := "tiap_drv"
 WIFI_EXT_MODULE_PATH        := "/system/lib/modules/sdio.ko"
 WIFI_EXT_MODULE_NAME        := "sdio"
 WIFI_FIRMWARE_LOADER        := "wlan_loader"
+WIFI_AP_FIRMWARE_LOADER     := "wlan_ap_loader"
 
 BOARD_USES_GENERIC_AUDIO := false
 
