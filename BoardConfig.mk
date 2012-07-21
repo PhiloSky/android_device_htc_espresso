@@ -149,3 +149,7 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_ICS_COMPAT
 # Additional
 TARGET_BOOTANIMATION_PRELOAD := true
 # TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+
+#GCC for 32bit build
+TARGET_TOOLCHAIN_ROOT := prebuilts/gcc/linux-x86/arm/arm-eabi-4.6
+TARGET_TOOLS_PREFIX := prebuilts/gcc/linux-x86/arm/arm-eabi-4.6/bin/arm-eabi-
