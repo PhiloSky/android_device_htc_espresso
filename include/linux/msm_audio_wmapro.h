@@ -27,54 +27,25 @@
  *
  */
 
-#ifndef __MSM_ROTATOR_H__
+#ifndef __MSM_AUDIO_WMAPRO_H
+#define __MSM_AUDIO_WMAPRO_H
 
-#include <linux/types.h>
-#include <linux/msm_mdp.h>
+#define AUDIO_GET_WMAPRO_CONFIG  _IOR(AUDIO_IOCTL_MAGIC, \
+	  (AUDIO_MAX_COMMON_IOCTL_NUM+0), unsigned)
+#define AUDIO_SET_WMAPRO_CONFIG  _IOW(AUDIO_IOCTL_MAGIC, \
+	  (AUDIO_MAX_COMMON_IOCTL_NUM+1), unsigned)
 
-#define MSM_ROTATOR_IOCTL_MAGIC 'R'
-
-#define MSM_ROTATOR_IOCTL_START   \
-		_IOWR(MSM_ROTATOR_IOCTL_MAGIC, 1, struct msm_rotator_img_info)
-#define MSM_ROTATOR_IOCTL_ROTATE   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 2, struct msm_rotator_data_info)
-#define MSM_ROTATOR_IOCTL_FINISH   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 3, int)
-
-enum rotator_clk_type {
-	ROTATOR_AXI_CLK,
-	ROTATOR_PCLK,
-	ROTATOR_IMEM_CLK
+struct msm_audio_wmapro_config {
+	unsigned short 	armdatareqthr;
+	uint8_t         validbitspersample;
+	uint8_t         numchannels;
+	unsigned short  formattag;
+	unsigned short  samplingrate;
+	unsigned short  avgbytespersecond;
+	unsigned short  asfpacketlength;
+	unsigned short 	channelmask;
+	unsigned short 	encodeopt;
+	unsigned short	advancedencodeopt;
+	uint32_t	advancedencodeopt2;
 };
-
-struct msm_rotator_img_info {
-	unsigned int session_id;
-	struct msmfb_img  src;
-	struct msmfb_img  dst;
-	struct mdp_rect src_rect;
-	unsigned int    dst_x;
-	unsigned int    dst_y;
-	unsigned char   rotations;
-	int enable;
-};
-
-struct msm_rotator_data_info {
-	int session_id;
-	struct msmfb_data src;
-	struct msmfb_data dst;
-};
-
-struct msm_rot_clocks {
-	const char *clk_name;
-	enum rotator_clk_type clk_type;
-	unsigned int clk_rate;
-};
-
-struct msm_rotator_platform_data {
-	unsigned int number_of_clocks;
-	unsigned int hardware_version_number;
-	struct msm_rot_clocks *rotator_clks;
-	const char *regulator_name;
-};
-#endif
-
+#endif /* __MSM_AUDIO_WMAPRO_H */

@@ -1,4 +1,4 @@
-/* Copyright (c) 2009, Code Aurora Forum. All rights reserved.
+/* Copyright (c) 2010, Code Aurora Forum. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -27,54 +27,39 @@
  *
  */
 
-#ifndef __MSM_ROTATOR_H__
+#ifndef __MSM_AUDIO_SBC_H
+#define __MSM_AUDIO_SBC_H
 
-#include <linux/types.h>
-#include <linux/msm_mdp.h>
+#include <linux/msm_audio.h>
 
-#define MSM_ROTATOR_IOCTL_MAGIC 'R'
+#define AUDIO_SET_SBC_ENC_CONFIG  _IOW(AUDIO_IOCTL_MAGIC, \
+  (AUDIO_MAX_COMMON_IOCTL_NUM+0), struct msm_audio_sbc_enc_config)
 
-#define MSM_ROTATOR_IOCTL_START   \
-		_IOWR(MSM_ROTATOR_IOCTL_MAGIC, 1, struct msm_rotator_img_info)
-#define MSM_ROTATOR_IOCTL_ROTATE   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 2, struct msm_rotator_data_info)
-#define MSM_ROTATOR_IOCTL_FINISH   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 3, int)
+#define AUDIO_GET_SBC_ENC_CONFIG  _IOR(AUDIO_IOCTL_MAGIC, \
+  (AUDIO_MAX_COMMON_IOCTL_NUM+1), struct msm_audio_sbc_enc_config)
 
-enum rotator_clk_type {
-	ROTATOR_AXI_CLK,
-	ROTATOR_PCLK,
-	ROTATOR_IMEM_CLK
+#define AUDIO_SBC_BA_LOUDNESS		0x0
+#define AUDIO_SBC_BA_SNR		0x1
+
+#define AUDIO_SBC_MODE_MONO		0x0
+#define AUDIO_SBC_MODE_DUAL		0x1
+#define AUDIO_SBC_MODE_STEREO		0x2
+#define AUDIO_SBC_MODE_JSTEREO		0x3
+
+#define AUDIO_SBC_BANDS_8		0x1
+
+#define AUDIO_SBC_BLOCKS_4		0x0
+#define AUDIO_SBC_BLOCKS_8		0x1
+#define AUDIO_SBC_BLOCKS_12		0x2
+#define AUDIO_SBC_BLOCKS_16		0x3
+
+struct msm_audio_sbc_enc_config {
+	uint32_t channels;
+	uint32_t sample_rate;
+	uint32_t bit_allocation;
+	uint32_t number_of_subbands;
+	uint32_t number_of_blocks;
+	uint32_t bit_rate;
+	uint32_t mode;
 };
-
-struct msm_rotator_img_info {
-	unsigned int session_id;
-	struct msmfb_img  src;
-	struct msmfb_img  dst;
-	struct mdp_rect src_rect;
-	unsigned int    dst_x;
-	unsigned int    dst_y;
-	unsigned char   rotations;
-	int enable;
-};
-
-struct msm_rotator_data_info {
-	int session_id;
-	struct msmfb_data src;
-	struct msmfb_data dst;
-};
-
-struct msm_rot_clocks {
-	const char *clk_name;
-	enum rotator_clk_type clk_type;
-	unsigned int clk_rate;
-};
-
-struct msm_rotator_platform_data {
-	unsigned int number_of_clocks;
-	unsigned int hardware_version_number;
-	struct msm_rot_clocks *rotator_clks;
-	const char *regulator_name;
-};
-#endif
-
+#endif /* __MSM_AUDIO_SBC_H */

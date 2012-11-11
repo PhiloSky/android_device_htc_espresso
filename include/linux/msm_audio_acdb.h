@@ -27,54 +27,41 @@
  *
  */
 
-#ifndef __MSM_ROTATOR_H__
+#ifndef __MSM_AUDIO_ACDB_H
+#define __MSM_AUDIO_ACDB_H
 
-#include <linux/types.h>
-#include <linux/msm_mdp.h>
+#include <linux/msm_audio.h>
 
-#define MSM_ROTATOR_IOCTL_MAGIC 'R'
+#define AUDIO_SET_VOCPROC_CAL		_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+0), unsigned)
+#define AUDIO_SET_VOCPROC_STREAM_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+1), unsigned)
+#define AUDIO_SET_VOCPROC_VOL_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+2), unsigned)
+#define AUDIO_SET_AUDPROC_RX_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+3), unsigned)
+#define AUDIO_SET_AUDPROC_RX_STREAM_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+4), unsigned)
+#define AUDIO_SET_AUDPROC_RX_VOL_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+5), unsigned)
+#define AUDIO_SET_AUDPROC_TX_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+6), unsigned)
+#define AUDIO_SET_AUDPROC_TX_STREAM_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+7), unsigned)
+#define AUDIO_SET_AUDPROC_TX_VOL_CAL	_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+8), unsigned)
+#define AUDIO_SET_SIDETONE_CAL		_IOW(AUDIO_IOCTL_MAGIC, \
+			(AUDIO_MAX_COMMON_IOCTL_NUM+9), unsigned)
 
-#define MSM_ROTATOR_IOCTL_START   \
-		_IOWR(MSM_ROTATOR_IOCTL_MAGIC, 1, struct msm_rotator_img_info)
-#define MSM_ROTATOR_IOCTL_ROTATE   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 2, struct msm_rotator_data_info)
-#define MSM_ROTATOR_IOCTL_FINISH   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 3, int)
-
-enum rotator_clk_type {
-	ROTATOR_AXI_CLK,
-	ROTATOR_PCLK,
-	ROTATOR_IMEM_CLK
+/* ACDB structures */
+struct cal_block {
+	uint32_t	cal_size;	/* Size of Cal Data */
+	uint32_t	cal_offset;	/* offset pointer to Cal Data */
 };
 
-struct msm_rotator_img_info {
-	unsigned int session_id;
-	struct msmfb_img  src;
-	struct msmfb_img  dst;
-	struct mdp_rect src_rect;
-	unsigned int    dst_x;
-	unsigned int    dst_y;
-	unsigned char   rotations;
-	int enable;
+struct sidetone_cal {
+	uint16_t	enable;
+	uint16_t	gain;
 };
 
-struct msm_rotator_data_info {
-	int session_id;
-	struct msmfb_data src;
-	struct msmfb_data dst;
-};
-
-struct msm_rot_clocks {
-	const char *clk_name;
-	enum rotator_clk_type clk_type;
-	unsigned int clk_rate;
-};
-
-struct msm_rotator_platform_data {
-	unsigned int number_of_clocks;
-	unsigned int hardware_version_number;
-	struct msm_rot_clocks *rotator_clks;
-	const char *regulator_name;
-};
-#endif
-
+#endif /* __MSM_AUDIO_ACDB_H */

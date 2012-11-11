@@ -27,54 +27,69 @@
  *
  */
 
-#ifndef __MSM_ROTATOR_H__
+#ifndef __MSM_AUDIO_VOICEMEMO_H
+#define __MSM_AUDIO_VOICEMEMO_H
 
-#include <linux/types.h>
-#include <linux/msm_mdp.h>
+#include <linux/msm_audio.h>
 
-#define MSM_ROTATOR_IOCTL_MAGIC 'R'
+#define AUDIO_GET_VOICEMEMO_CONFIG  _IOW(AUDIO_IOCTL_MAGIC, \
+	(AUDIO_MAX_COMMON_IOCTL_NUM+0), unsigned)
+#define AUDIO_SET_VOICEMEMO_CONFIG  _IOR(AUDIO_IOCTL_MAGIC, \
+	(AUDIO_MAX_COMMON_IOCTL_NUM+1), unsigned)
 
-#define MSM_ROTATOR_IOCTL_START   \
-		_IOWR(MSM_ROTATOR_IOCTL_MAGIC, 1, struct msm_rotator_img_info)
-#define MSM_ROTATOR_IOCTL_ROTATE   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 2, struct msm_rotator_data_info)
-#define MSM_ROTATOR_IOCTL_FINISH   \
-		_IOW(MSM_ROTATOR_IOCTL_MAGIC, 3, int)
-
-enum rotator_clk_type {
-	ROTATOR_AXI_CLK,
-	ROTATOR_PCLK,
-	ROTATOR_IMEM_CLK
+/* rec_type */
+enum rpc_voc_rec_dir_type {
+	RPC_VOC_REC_NONE,
+	RPC_VOC_REC_FORWARD,
+	RPC_VOC_REC_REVERSE,
+	RPC_VOC_REC_BOTH,
+	RPC_VOC_MAX_REC_TYPE
 };
 
-struct msm_rotator_img_info {
-	unsigned int session_id;
-	struct msmfb_img  src;
-	struct msmfb_img  dst;
-	struct mdp_rect src_rect;
-	unsigned int    dst_x;
-	unsigned int    dst_y;
-	unsigned char   rotations;
-	int enable;
+/* capability */
+enum rpc_voc_capability_type {
+	RPC_VOC_CAP_IS733 = 4,
+	RPC_VOC_CAP_IS127 = 8,
+	RPC_VOC_CAP_AMR = 64,
+	RPC_VOC_CAP_32BIT_DUMMY = 2147483647
 };
 
-struct msm_rotator_data_info {
-	int session_id;
-	struct msmfb_data src;
-	struct msmfb_data dst;
+/* Rate */
+enum rpc_voc_rate_type {
+	RPC_VOC_0_RATE = 0,
+	RPC_VOC_8_RATE,
+	RPC_VOC_4_RATE,
+	RPC_VOC_2_RATE,
+	RPC_VOC_1_RATE,
+	RPC_VOC_ERASURE,
+	RPC_VOC_ERR_RATE,
+	RPC_VOC_AMR_RATE_475 = 0,
+	RPC_VOC_AMR_RATE_515 = 1,
+	RPC_VOC_AMR_RATE_590 = 2,
+	RPC_VOC_AMR_RATE_670 = 3,
+	RPC_VOC_AMR_RATE_740 = 4,
+	RPC_VOC_AMR_RATE_795 = 5,
+	RPC_VOC_AMR_RATE_1020 = 6,
+	RPC_VOC_AMR_RATE_1220 = 7,
 };
 
-struct msm_rot_clocks {
-	const char *clk_name;
-	enum rotator_clk_type clk_type;
-	unsigned int clk_rate;
+/* frame_format */
+enum rpc_voc_pb_len_rate_var_type {
+	RPC_VOC_PB_NATIVE_QCP = 3,
+	RPC_VOC_PB_AMR,
+	RPC_VOC_PB_EVB
 };
 
-struct msm_rotator_platform_data {
-	unsigned int number_of_clocks;
-	unsigned int hardware_version_number;
-	struct msm_rot_clocks *rotator_clks;
-	const char *regulator_name;
+struct msm_audio_voicememo_config {
+	uint32_t rec_type;
+	uint32_t rec_interval_ms;
+	uint32_t auto_stop_ms;
+	uint32_t capability;
+	uint32_t max_rate;
+	uint32_t min_rate;
+	uint32_t frame_format;
+	uint32_t dtx_enable;
+	uint32_t data_req_ms;
 };
-#endif
 
+#endif /* __MSM_AUDIO_VOICEMEMO_H */
