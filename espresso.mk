@@ -178,7 +178,7 @@ PRODUCT_COPY_FILES += \
 
 # File Manager
 PRODUCT_PACKAGES += \
-    FileManager
+    CMFileManager
 
 PRODUCT_COPY_FILES += \
     device/htc/espresso/vold.fstab:system/etc/vold.fstab \
