@@ -95,6 +95,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.qctwa.preservebuf=1 \
     com.qc.hardware=true \
     com.qc.hdmi_out=false \
+    lpa.decode=true \
+    lpa.use-stagefright=true \
     debug.camcorder.disablemeta=1
 
 # Override /proc/sys/vm/dirty_ratio on UMS
