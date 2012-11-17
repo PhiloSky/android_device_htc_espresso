@@ -130,18 +130,25 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librs_jni \
     lights.latte \
-    gralloc.msm7x27 \
-    copybit.msm7x27 \
     sensors.latte \
+    gps.latte \
     audio.primary.latte \
     audio_policy.latte \
     audio.a2dp.default \
-    gps.latte \
-    libmm-omxcore \
-    libOmxCore \
-    libstagefrighthw \
+    libtinyalsa \
+    libaudioutils \
+    gralloc.msm7x27 \
+    copybit.msm7x27 \
     hwcomposer.default \
     hwcomposer.msm7x27 \
+    libgenlock \
+    libmemalloc \
+    liboverlay \
+    libQcomUI \
+    libtilerenderer \
+    libstagefrighthw \
+    libOmxCore \
+    libmm-omxcore \
     com.android.future.usb.accessory \
     e2fsck \
     camera.msm7x27
@@ -178,7 +185,7 @@ PRODUCT_COPY_FILES += \
 
 # File Manager
 PRODUCT_PACKAGES += \
-    FileManager
+    CMFileManager
 
 PRODUCT_COPY_FILES += \
     device/htc/espresso/vold.fstab:system/etc/vold.fstab \
