@@ -131,6 +131,7 @@ struct mdp_blit_req {
  uint32_t alpha;
  uint32_t transp_mask;
  uint32_t flags;
+ int sharpening_strength;
 };
 
 struct mdp_blit_req_list {
