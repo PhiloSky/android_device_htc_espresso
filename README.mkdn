@@ -15,7 +15,6 @@ You may obtain a copy of the License at
 
 	http://www.apache.org/licenses/LICENSE-2.0
 
----
 
 Description
 -----------
@@ -65,19 +64,15 @@ Connect phone to usb abd make sure debugging is avaliable for adb pulls
 
 	$ make otapackage -j2
 
----
 Thanks
 ------
 	CyanogenMod Team
 	bluewater-cn
-	[cryptomilk](http://git.cryptomilk.org/)
+	cryptomilk---http://git.cryptomilk.org/
 	WinSuk
 	Ganster41
 	tpruvot
 	attn1
-	jznomoney
-	(who booted the first liberty on Gingerbread and contributes tons to this device)
-	[LibertyICS](https://github.com/LibertyICS)
+	jznomoney(who booted the first liberty on Gingerbread and contributes tons to this device)
+	LibertyICS---https://github.com/LibertyICS
 	TeamDS---https://github.com/TeamDS
----
-EOF
