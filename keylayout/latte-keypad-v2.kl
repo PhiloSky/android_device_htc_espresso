@@ -54,7 +54,7 @@ key 32    D                 WAKE_DROPPED
 key 33    F                 WAKE_DROPPED
 key 49    N                 WAKE_DROPPED
 key 139   MENU		    WAKE_DROPPED
-key 187   SEARCH
+key 187   ENDCALL           WAKE_DROPPED
 
 # column 6
 key 30    A                 WAKE_DROPPED

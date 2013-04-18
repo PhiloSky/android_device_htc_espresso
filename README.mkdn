@@ -1,0 +1,71 @@
+##Device configuration for the HTC Espresso (T-Mobile MyTouch Slide)
+
+	Copyright (C) 2011 The CyanogenMod Project
+	Copyright (C) 2013 PhiloSky
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+	http://www.apache.org/licenses/LICENSE-2.0
+
+
+###Description
+
+This repository is for CyanogenMod 7 on HTC espresso.
+
+It is still a work in progress, my purpose is:
+
+* The ROM built from source code can be used immediately.
+
+The features now:
+
+* Add WITH_DEXPREOPT: don't merge dex files into apks and jars
+* Now the 187 key(genius key) is ENDCALL & WAKE_DROPPED
+* Add soft buttons on the notification bar
+* Wait for more ...
+
+##How To Build CyanogenMod 7 for HTC espresso
+
+###Make a workspace
+
+	cd ~
+	mkdir cm7
+	cd cm7
+
+###Do repo init & sync
+
+	repo init -u git://github.com/PhiloSky/android.git -b gingerbread
+	repo sync
+
+###Setup Rom Manager
+
+	cd vendor/cyanogen
+	. get-rommanager
+	cd ../..
+
+###Setup device
+
+Connect phone to usb abd make sure debugging is avaliable for adb pulls
+
+	cd device/htc/espresso
+	. extract-files.sh
+	#this pulls files from working espresso with most variants of shipped HTC ROM
+	cd ../../..
+
+
+###Setup environment
+
+	source build/envsetup.sh
+
+###Build CM7
+
+	brunch espresso -j2
+	#don't use lunch+make like CM9, it will cause proguard errors
+
+---
+###Thanks
+
+	AOSP
+	CyanogenMod team
+	……
